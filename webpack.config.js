@@ -38,6 +38,7 @@ const config = (env, argv) => {
                 template: './public/index.html',
                 filename: './index.html',
             }),
+            
         ],
     }
 }
