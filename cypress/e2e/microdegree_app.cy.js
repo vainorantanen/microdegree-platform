@@ -1,12 +1,12 @@
 describe('Microdegree app login', function() {
   it('Login page can be opened', function() {
-    cy.visit('http://localhost:3003')
+    cy.visit('http://localhost:5000')
     cy.contains('Username')
     cy.contains('Password')
   })
 
   it('User can log in', function() {
-    cy.visit('http://localhost:3003')
+    cy.visit('http://localhost:5000')
     cy.get('#username').type('firma')
     cy.get('#password').type('firma')
     cy.get('#login-button').click()
@@ -17,7 +17,7 @@ describe('Microdegree app login', function() {
 
 describe('Microdegree app views', function() {
   it('User can view a single course', function() {
-    cy.visit('http://localhost:3003')
+    cy.visit('http://localhost:5000')
     cy.get('#username').type('firma')
     cy.get('#password').type('firma')
     cy.get('#login-button').click()
@@ -30,7 +30,7 @@ describe('Microdegree app views', function() {
   })
 
   it('User can view a single company page', function() {
-    cy.visit('http://localhost:3003')
+    cy.visit('http://localhost:5000')
     cy.get('#username').type('firma')
     cy.get('#password').type('firma')
     cy.get('#login-button').click()
@@ -42,7 +42,7 @@ describe('Microdegree app views', function() {
   })
 
   it('User can view the course adding page', function() {
-    cy.visit('http://localhost:3003')
+    cy.visit('http://localhost:5000')
     cy.get('#username').type('firma')
     cy.get('#password').type('firma')
     cy.get('#login-button').click()
