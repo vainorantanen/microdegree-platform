@@ -36,7 +36,7 @@ app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 
 app.get('/version', (req, res) => {
-  res.send('4, kokeillaan toimiiko health check') // change this string to ensure a new version deployed
+  res.send('5, kokeillaan toimiiko bumping') // change this string to ensure a new version deployed
 })
 
 app.get('/health', (req, res) => {

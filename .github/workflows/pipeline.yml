@@ -39,8 +39,8 @@ jobs:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
           SECRET: ${{ secrets.SECRET }}
 
-  deployment:
-    name: Deploy
+  tag_release_and_deployment:
+    name: Bump version and deploy
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
     steps:
@@ -54,6 +54,13 @@ jobs:
       
       - name: Install dependencies
         run: npm ci
+      
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.67.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
+        if: ${{ github.event_name == 'push' && !contains(github.event.commits[0].message, '#skip') }}
       
       - name: Deploy to production
         uses: johnbeynon/render-deploy-action@v0.0.8
