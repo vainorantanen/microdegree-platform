@@ -35,6 +35,10 @@ app.use('/api/courses', coursesRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 
+app.get('/version', (req, res) => {
+  res.send('1, kokeillaan toimiiko actionit') // change this string to ensure a new version deployed
+})
+
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
 
