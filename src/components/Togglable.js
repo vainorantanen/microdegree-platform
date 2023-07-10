@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useImperativeHandle, forwardRef } from 'react'
-import { Button } from 'react-bootstrap'
+import { Button } from '@mui/material'
 
 const Togglable = forwardRef((props, ref) => {
   const [visible, setVisible] = useState(false)

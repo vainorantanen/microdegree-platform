@@ -1,19 +1,34 @@
 import React from 'react'
-import { Table } from 'react-bootstrap'
 import Company from './Company'
+import { Box, Container, Typography } from '@mui/material'
 
 const CompaniesList = ({ users }) => {
-
   return (
-    <div>
-      <Table striped>
-        <tbody>
-          {users.map(u =>
-            <Company key={u.id} company={u}/>
-          )}
-        </tbody>
-      </Table>
-    </div>
+    <Container>
+      <Typography
+        variant="h2"
+        sx={{
+          fontSize: '2rem',
+          '@media (max-width: 442px)': {
+            fontSize: '1.4rem',
+          },
+        }}
+      >
+        Companies
+      </Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        {users.map((u) => (
+          <Box key={u.id} sx={{ marginBottom: '1rem' }}>
+            <Company company={u} />
+          </Box>
+        ))}
+      </Box>
+    </Container>
   )
 }
 

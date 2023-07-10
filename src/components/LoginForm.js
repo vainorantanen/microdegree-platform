@@ -1,6 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
+
 
 const LoginForm = ({ login }) => {
   const [username, setUsername] = useState('')
@@ -12,27 +15,30 @@ const LoginForm = ({ login }) => {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Label>Username</Form.Label>
-        <Form.Control
-          id='username'
-          value={username}
-          onChange={({ target }) => setUsername(target.value)}
-        />
+    <Box component="form" onSubmit={handleSubmit}>
+      <TextField
+        id="username"
+        label="Username"
+        value={username}
+        onChange={({ target }) => setUsername(target.value)}
+      />
 
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          id='password'
-          type="password"
-          value={password}
-          onChange={({ target }) => setPassword(target.value)}
-        />
-        <Button style={ { marginTop : '2%' } } id='login-button' type="submit">
+      <TextField
+        id="password"
+        label="Password"
+        type="password"
+        value={password}
+        onChange={({ target }) => setPassword(target.value)}
+      />
+
+      <Button
+        variant="contained"
+        type="submit"
+        style={{ marginTop: '2%' }}
+      >
         Login
-        </Button>
-      </Form.Group>
-    </Form>
+      </Button>
+    </Box>
   )
 }
 

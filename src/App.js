@@ -8,7 +8,6 @@ import usersService from './services/users'
 import Notification from './components/Notification'
 import storageService from './services/storage'
 import LoginForm from './components/LoginForm'
-import Menu from './components/Menu'
 import CoursesList from './components/CoursesList'
 import AddCoursePage from './components/AddCoursePage'
 import CourseInfoPage from './components/CourseInfoPage'
@@ -17,10 +16,23 @@ import RegisterPage from './components/RegisterPage'
 import CompanyInfoPage from './components/CompanyInfoPage'
 
 import {
-  BrowserRouter as Router,
   Routes, Route
 } from 'react-router-dom'
 import Togglable from './components/Togglable'
+import Footer from './components/Footer'
+import Navbar from './components/Navbar/Navbar'
+
+import './App.css'
+import { Box } from '@mui/material'
+
+import { ThemeProvider } from '@emotion/react'
+import { createTheme } from '@mui/material/styles'
+
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Montserrat'
+  },
+})
 
 const App = () => {
   const [courses, setCourses] = useState([])
@@ -109,9 +121,9 @@ const App = () => {
 
 
   return (
-    <Router>
-      <div className='container'>
-        <Menu user={user} logout={logout}/>
+    <ThemeProvider theme={theme}>
+      <Box style={{ marginTop: '4rem' }}>
+        <Navbar user={user} logout={logout}/>
         <Notification info={info}/>
         <Routes>
           <Route path='/' element={<CoursesList courses={courses} />}/>
@@ -120,8 +132,9 @@ const App = () => {
           <Route path='/companies' element={<CompaniesList users={users}/>} />
           <Route path='/companies/:id' element={<CompanyInfoPage users={users}/>} />
         </Routes>
-      </div>
-    </Router>
+        <Footer />
+      </Box>
+    </ThemeProvider>
   )
 }
 
