@@ -36,7 +36,7 @@ app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 
 app.get('/version', (req, res) => {
-  res.send('2, kokeillaan toimiiko auto-deploy') // change this string to ensure a new version deployed
+  res.send('3, kokeillaan toimiiko auto-deploy') // change this string to ensure a new version deployed
 })
 
 app.use(middleware.unknownEndpoint)
