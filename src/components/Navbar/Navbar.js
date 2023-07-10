@@ -16,7 +16,7 @@ import {
 import { Menu as MenuIcon } from '@mui/icons-material'
 import './navbar.css'
 
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const theme = createTheme({
   palette: {
@@ -62,20 +62,18 @@ const Navbar = ({ user, logout }) => {
             <StyledButton color="inherit" component={Link} to="/addcourse">
               Add a course
             </StyledButton>
-            <div>
-              <Typography>
-                {user && (
-                  <>{user.name} Logged in</>
-                )}
-              </Typography>
-              {user ? (
-                <><Button onClick={logout} >
+            <Typography className='logged-user'>
+              {user && (
+                <>{user.name} Logged in</>
+              )}
+            </Typography>
+            {user ? (
+              <StyledButton onClick={logout} >
                 Logout
-                </Button></>
-              ) : <Button onClick={Navigate('/login')} >
+              </StyledButton>
+            ) : <StyledButton color="inherit" component={Link} to="/login">
               Login
-              </Button>}
-            </div>
+            </StyledButton>}
           </div>
         </Toolbar>
       </AppBar>
@@ -90,6 +88,13 @@ const Navbar = ({ user, logout }) => {
           <ListItemButton component={Link} to="/addcourse" onClick={toggleDrawer}>
             <ListItemText primary="Add a course" />
           </ListItemButton>
+          {!user ? (
+            <ListItemButton component={Link} to="/login" onClick={toggleDrawer}>
+              <ListItemText primary="Login" />
+            </ListItemButton>
+          ) : <ListItemButton onClick={logout}>
+            <ListItemText primary="Logout" />
+          </ListItemButton>}
         </List>
       </Drawer>
     </ThemeProvider>

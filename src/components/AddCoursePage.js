@@ -1,8 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
-import TextField from '@mui/material/TextField'
-import Button from '@mui/material/Button'
-import Box from '@mui/material/Box'
+import {
+  TextField,
+  Button,
+  Typography,
+  Container,
+  Box
+} from '@mui/material'
 
 
 const AddCoursePage = ({ addCourse }) => {
@@ -22,16 +26,42 @@ const AddCoursePage = ({ addCourse }) => {
   }
 
   return (
-    <div>
-      <h4>Add a new course!</h4>
+    <Container sx={{ marginTop: '5rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '100vh',
+    }}>
+      <Typography
+        sx={{
+          fontSize: '3rem',
+          textAlign: 'center',
+          '@media (max-width: 442px)': {
+            fontSize: '1.5rem',
+          },
+        }}
+      >
+          Add a new course!
+      </Typography>
 
-      <Box component="form" onSubmit={handleSubmit}>
+      <Box component="form" onSubmit={handleSubmit}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          marginTop: '2rem',
+          marginBottom: '2rem',
+          width: '100%',
+          maxWidth: '30rem',
+        }}
+      >
         <TextField
           id="title"
           label="Course title"
           placeholder="title"
           value={title}
           onChange={({ target }) => setTitle(target.value)}
+          sx={{ marginBottom: '1rem' }}
         />
         <TextField
           id="company"
@@ -39,6 +69,7 @@ const AddCoursePage = ({ addCourse }) => {
           placeholder="company"
           value={company}
           onChange={({ target }) => setCompany(target.value)}
+          sx={{ marginBottom: '1rem' }}
         />
         <TextField
           id="url"
@@ -46,6 +77,7 @@ const AddCoursePage = ({ addCourse }) => {
           placeholder="url"
           value={url}
           onChange={({ target }) => setUrl(target.value)}
+          sx={{ marginBottom: '1rem' }}
         />
         <TextField
           id="additionalinfo"
@@ -55,16 +87,26 @@ const AddCoursePage = ({ addCourse }) => {
           rows={4}
           value={description}
           onChange={({ target }) => setDescription(target.value)}
+          sx={{ marginBottom: '1rem' }}
         />
         <Button
-          variant="contained"
           type="submit"
-          style={{ marginTop: '2%' }}
+          variant="contained"
+          color="primary"
+          fullWidth
+          sx={{ backgroundColor: 'blue', color: 'white',
+            transition: 'transform 0.3s',
+            marginTop: '1rem',
+            marginBottom: '1rem',
+            '&:hover': {
+              transform: 'scale(1.05)',
+              backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)' }
+          }}
         >
           Add!
         </Button>
       </Box>
-    </div>
+    </Container>
   )
 }
 

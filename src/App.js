@@ -12,13 +12,11 @@ import CoursesList from './components/CoursesList'
 import AddCoursePage from './components/AddCoursePage'
 import CourseInfoPage from './components/CourseInfoPage'
 import CompaniesList from './components/CompaniesList'
-import RegisterPage from './components/RegisterPage'
 import CompanyInfoPage from './components/CompanyInfoPage'
 
 import {
   Routes, Route
 } from 'react-router-dom'
-import Togglable from './components/Togglable'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar/Navbar'
 
@@ -104,22 +102,6 @@ const App = () => {
     setCourses(courses.map(c => c.id === course.id ? updatedCourse : c))
   }
 
-  if (!user) {
-    return (
-      <div className='container'>
-        <h1>Want to enhance your skills?</h1>
-        <h2>Log in to Micro Platform!</h2>
-        <Notification info={info} />
-        <LoginForm login={login} />
-        <h3>Not a member yet? Register below!</h3>
-        <Togglable buttonLabel='Register' ref={registerFormRef}>
-          <RegisterPage addUser={addUser}/>
-        </Togglable>
-      </div>
-    )
-  }
-
-
   return (
     <ThemeProvider theme={theme}>
       <Box style={{ marginTop: '4rem' }}>
@@ -131,6 +113,8 @@ const App = () => {
           <Route path='/courses/:id' element={<CourseInfoPage courses={courses} like={like} />} />
           <Route path='/companies' element={<CompaniesList users={users}/>} />
           <Route path='/companies/:id' element={<CompanyInfoPage users={users}/>} />
+          <Route path='/login' element={<LoginForm login={login} info={info} registerFormRef={registerFormRef}
+            addUser={addUser}/>} />
         </Routes>
         <Footer />
       </Box>
