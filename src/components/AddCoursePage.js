@@ -1,6 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import {
+  TextField,
+  Button,
+  Typography,
+  Container,
+  Box
+} from '@mui/material'
+
 
 const AddCoursePage = ({ addCourse }) => {
   const [title, setTitle] = useState('')
@@ -19,44 +26,87 @@ const AddCoursePage = ({ addCourse }) => {
   }
 
   return (
-    <div>
-      <h4>Add a new course!</h4>
+    <Container sx={{ marginTop: '5rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '100vh',
+    }}>
+      <Typography
+        sx={{
+          fontSize: '3rem',
+          textAlign: 'center',
+          '@media (max-width: 442px)': {
+            fontSize: '1.5rem',
+          },
+        }}
+      >
+          Add a new course!
+      </Typography>
 
-      <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>Course title</Form.Label>
-          <Form.Control
-            id='title'
-            placeholder='title'
-            value={title}
-            onChange={({ target }) => setTitle(target.value)}
-          />
-          <Form.Label>Company name</Form.Label>
-          <Form.Control
-            id='company'
-            placeholder='company'
-            value={company}
-            onChange={({ target }) => setCompany(target.value)}
-          />
-          <Form.Label>URL to course page</Form.Label>
-          <Form.Control
-            id='url'
-            placeholder='url'
-            value={url}
-            onChange={({ target }) => setUrl(target.value)}
-          />
-          <Form.Label>Course description</Form.Label>
-          <Form.Control
-            id='additionalinfo'
-            as='textarea'
-            placeholder='Course description'
-            value={description}
-            onChange={({ target }) => setDescription(target.value)}
-          />
-          <Button style={ { marginTop : '2%' } } type="submit">Add!</Button>
-        </Form.Group>
-      </Form>
-    </div>
+      <Box component="form" onSubmit={handleSubmit}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          marginTop: '2rem',
+          marginBottom: '2rem',
+          width: '100%',
+          maxWidth: '30rem',
+        }}
+      >
+        <TextField
+          id="title"
+          label="Course title"
+          placeholder="title"
+          value={title}
+          onChange={({ target }) => setTitle(target.value)}
+          sx={{ marginBottom: '1rem' }}
+        />
+        <TextField
+          id="company"
+          label="Company name"
+          placeholder="company"
+          value={company}
+          onChange={({ target }) => setCompany(target.value)}
+          sx={{ marginBottom: '1rem' }}
+        />
+        <TextField
+          id="url"
+          label="URL to course page"
+          placeholder="url"
+          value={url}
+          onChange={({ target }) => setUrl(target.value)}
+          sx={{ marginBottom: '1rem' }}
+        />
+        <TextField
+          id="additionalinfo"
+          label="Course description"
+          placeholder="Course description"
+          multiline
+          rows={4}
+          value={description}
+          onChange={({ target }) => setDescription(target.value)}
+          sx={{ marginBottom: '1rem' }}
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth
+          sx={{ backgroundColor: 'blue', color: 'white',
+            transition: 'transform 0.3s',
+            marginTop: '1rem',
+            marginBottom: '1rem',
+            '&:hover': {
+              transform: 'scale(1.05)',
+              backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)' }
+          }}
+        >
+          Add!
+        </Button>
+      </Box>
+    </Container>
   )
 }
 

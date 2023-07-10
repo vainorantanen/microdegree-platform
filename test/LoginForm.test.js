@@ -6,15 +6,18 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, screen } from '@testing-library/react'
 import LoginForm from '../src/components/LoginForm'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-// eslint-disable-next-line no-undef
 test('renders login form', () => {
+  render(
+    <Router>
+      <LoginForm />
+    </Router>
+  )
 
-  render(<LoginForm />)
+  const username = screen.getByLabelText('Username')
+  const password = screen.getByLabelText('Password')
 
-  const username = screen.getByText('Username')
-  const password = screen.getByText('Password')
-  // eslint-disable-next-line no-undef
   expect(username).toBeDefined()
   expect(password).toBeDefined()
 })

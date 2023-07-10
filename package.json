@@ -4,7 +4,7 @@
     "description": "platform for microdegrees",
     "scripts": {
         "build": "webpack --mode=production",
-        "start": "webpack serve --mode=development",
+        "start": "webpack-dev-server --open --mode development",
         "start-prod": "node app.js",
         "eslint": "eslint .",
         "test": "jest",
@@ -37,6 +37,10 @@
         "webpack-dev-server": "^4.15.1"
     },
     "dependencies": {
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
+        "@mui/icons-material": "^5.13.7",
+        "@mui/material": "^5.13.7",
         "axios": "^1.4.0",
         "bcrypt": "^5.1.0",
         "core-js": "^3.31.1",

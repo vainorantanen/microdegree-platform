@@ -1,3 +1,4 @@
+import { Container } from '@mui/material'
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
@@ -10,7 +11,7 @@ const CompanyInfoPage = ({ users }) => {
     return null
   }
   return (
-    <div style={ { margin : '15%' } }>
+    <Container>
       <h1>{company.name}</h1><img src={`${company.imageurl}`}
         alt='company logo' style={ { border: '1px solid black', borderRadius : '5%',
           margin : '3%' } }
@@ -24,7 +25,7 @@ const CompanyInfoPage = ({ users }) => {
           ))}
         </ul>
       }
-    </div>
+    </Container>
   )
 }
 

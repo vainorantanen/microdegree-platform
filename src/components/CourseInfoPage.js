@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { Button } from 'react-bootstrap'
+import { Container, Button, Typography } from '@mui/material'
 
 const CourseInfoPage = ({ courses, like }) => {
 
@@ -10,28 +10,40 @@ const CourseInfoPage = ({ courses, like }) => {
     return null
   }
   return (
-    <div style={ { margin : '15%' } }>
-      <h1>{course.title}</h1>
-      <p>Likes: {course.likes}</p>
-      <p>Have you completed this course? Did you like it? Let us know!</p>
+    <Container>
+      <Typography variant="h1">{course.title}</Typography>
+      <Typography>Likes: {course.likes}</Typography>
+      <Typography>
+    Have you completed this course? Did you like it? Let us know!
+      </Typography>
       <Button onClick={() => like(course)}>Like</Button>
-      <h3>Course description</h3>
-      {!course.description &&
-      <p>
-       Its a mystery!
-      </p>}
-      {course.description &&
-        <p style={ { whiteSpace : 'break-spaces' } }>
+      <Typography variant="h3">Course description</Typography>
+      {!course.description && (
+        <Typography>
+      Its a mystery!
+        </Typography>
+      )}
+      {course.description && (
+        <Typography style={{ whiteSpace: 'break-spaces' }}>
           {course.description}
-        </p>
-      }
-      <h3>Apply here:  <a href='#'> {course.url}</a></h3>
-      <h4>By {course.company}</h4>
-      <img src={`${course.user.imageurl}`}
-        alt='Image of company logo'
-        style={ { border : '2px solid black',
-          borderRadius : '10%', height : '20%', width : '20%' } }></img>
-    </div>
+        </Typography>
+      )}
+      <Typography variant="h3">
+    Apply here: <a href="#">{course.url}</a>
+      </Typography>
+      <Typography variant="h4">By {course.company}</Typography>
+      <img
+        src={`${course.user.imageurl}`}
+        alt="Image of company logo"
+        style={{
+          border: '2px solid black',
+          borderRadius: '10%',
+          height: '20%',
+          width: '20%',
+        }}
+      />
+    </Container>
+
   )
 }
 
