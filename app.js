@@ -36,7 +36,11 @@ app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 
 app.get('/version', (req, res) => {
-  res.send('3, kokeillaan toimiiko auto-deploy') // change this string to ensure a new version deployed
+  res.send('4, kokeillaan toimiiko health check') // change this string to ensure a new version deployed
+})
+
+app.get('/health', (req, res) => {
+  res.send('ok')
 })
 
 app.use(middleware.unknownEndpoint)
