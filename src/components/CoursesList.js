@@ -17,7 +17,7 @@ const CoursesList = ({ courses }) => {
   )
 
   return (
-    <Container sx={{ marginTop: '4rem' }}>
+    <Container sx={{ marginTop: '8rem' }}>
       <Typography
         sx={{
           fontSize: '2.5rem',
@@ -26,35 +26,33 @@ const CoursesList = ({ courses }) => {
             fontSize: '1.5rem',
           },
         }}
-      >Courses we provide</Typography>
+      >Courses</Typography>
 
+      <Typography
+        sx={{
+          fontSize: '1.6rem',
+          textAlign: 'center',
+          marginTop: '3rem',
+          '@media (max-width: 442px)': {
+            fontSize: '1.1rem',
+          },
+        }}
+      >Find the micro degrees that best suit your needs and get hired fast</Typography>
+
+      <Filter filter={filter} handleFilterChange={handleFilterChange} />
       <Box sx={{
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        width: '100%',
         textAlign: 'center',
         gap: '1rem',
-        marginBottom: '2rem'
+        marginBottom: '1rem',
+        borderRadius: '1rem'
       }}>
-
-        <Box sx={{ marginTop: '1rem', marginBottom: '1rem', textAlign: 'center' }}>
-          <Filter filter={filter} handleFilterChange={handleFilterChange} />
-        </Box>
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          width: '100%',
-          textAlign: 'center',
-          gap: '1rem',
-          marginBottom: '2rem' }}>
-          {coursesToShow.map((course) => (
-            <Course key={course.id} course={course} />
-          ))}
-        </Box>
+        {coursesToShow.map((course) => (
+          <Course key={course.id} course={course} />
+        ))}
       </Box>
     </Container>
   )

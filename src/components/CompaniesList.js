@@ -4,34 +4,43 @@ import { Box, Container, Typography } from '@mui/material'
 
 const CompaniesList = ({ users }) => {
   return (
-    <Container sx={{ marginTop: '5rem',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-    }}>
-      <Box>
-        <Typography
-          variant="h2"
-          sx={{
-            fontSize: '2rem',
-            '@media (max-width: 442px)': {
-              fontSize: '1.4rem',
-            },
-          }}
-        >
+    <Container sx={{ marginTop: '8rem' }}>
+      <Typography
+        sx={{
+          fontSize: '2.5rem',
+          textAlign: 'center',
+          '@media (max-width: 442px)': {
+            fontSize: '1.4rem',
+          },
+        }}
+      >
           Companies
-        </Typography>
-      </Box>
+      </Typography>
+
+      <Typography
+        sx={{
+          fontSize: '1.6rem',
+          textAlign: 'center',
+          marginTop: '3rem',
+          marginBottom: '3rem',
+          '@media (max-width: 442px)': {
+            fontSize: '1.1rem',
+          },
+        }}
+      >Companies that provide micro degrees</Typography>
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
+          justifyContent: 'center',
+          textAlign: 'center',
+          gap: '1rem',
+          marginBottom: '1rem',
+          borderRadius: '1rem'
         }}
       >
         {users.map((u) => (
-          <Box key={u.id} sx={{ marginBottom: '1rem' }}>
-            <Company company={u} />
-          </Box>
+          <Company key={u.id} company={u} />
         ))}
       </Box>
     </Container>
