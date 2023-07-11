@@ -15,7 +15,6 @@ import {
 } from '@mui/material'
 import { Menu as MenuIcon } from '@mui/icons-material'
 import './navbar.css'
-
 import { Link } from 'react-router-dom'
 
 const theme = createTheme({
@@ -38,6 +37,13 @@ const StyledButton = styled(Button)({
     backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)' }
 })
 
+const NavButtons = styled('div')({
+  display: 'flex',
+  '@media (max-width: 600px)': {
+    display: 'none !important',
+  },
+})
+
 const Navbar = ({ user, logout }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
@@ -52,7 +58,7 @@ const Navbar = ({ user, logout }) => {
           <IconButton color="inherit" onClick={toggleDrawer}>
             <MenuIcon />
           </IconButton>
-          <div className="nav-buttons">
+          <NavButtons>
             <StyledButton color="inherit" component={Link} to="/">
               Courses
             </StyledButton>
@@ -74,7 +80,7 @@ const Navbar = ({ user, logout }) => {
             ) : <StyledButton color="inherit" component={Link} to="/login">
               Login
             </StyledButton>}
-          </div>
+          </NavButtons>
         </Toolbar>
       </AppBar>
       <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer}>

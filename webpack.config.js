@@ -15,6 +15,13 @@ const config = (env, argv) => {
             static: path.resolve(__dirname, 'build'),
             compress: true,
             port: 3000,
+            proxy: {
+                '/api': {
+                    target: 'http://localhost:5000',
+                    secure: false
+                }
+            }
+        
         },
         devtool: 'source-map',
 

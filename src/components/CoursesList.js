@@ -26,7 +26,7 @@ const CoursesList = ({ courses }) => {
             fontSize: '1.5rem',
           },
         }}
-      >Courses</Typography>
+      >Courses we provide</Typography>
 
       <Box sx={{
         display: 'flex',

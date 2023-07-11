@@ -1,30 +1,27 @@
 import React from 'react'
-import { Alert } from 'react-bootstrap'
+import { Alert, Box } from '@mui/material'
 
 const Notification = ({ info }) => {
   if (!info.message) {
-    return
+    return null
   }
 
   const margin = {
-    marginTop : '3%'
+    marginTop: '3%',
   }
 
   if (info.type === 'error') {
     return (
-      <div style={margin}>
-        <Alert variant="danger">
-          {info.message}
-        </Alert>
-      </div>
+      <Box sx={margin}>
+        <Alert severity="error">{info.message}</Alert>
+      </Box>
     )
   }
+
   return (
-    <div style={margin}>
-      <Alert variant="success">
-        {info.message}
-      </Alert>
-    </div>
+    <Box sx={margin}>
+      <Alert severity="success">{info.message}</Alert>
+    </Box>
   )
 }
 

@@ -8,7 +8,6 @@ import usersService from './services/users'
 import Notification from './components/Notification'
 import storageService from './services/storage'
 import LoginForm from './components/LoginForm'
-import CoursesList from './components/CoursesList'
 import AddCoursePage from './components/AddCoursePage'
 import CourseInfoPage from './components/CourseInfoPage'
 import CompaniesList from './components/CompaniesList'
@@ -25,6 +24,7 @@ import { Box } from '@mui/material'
 
 import { ThemeProvider } from '@emotion/react'
 import { createTheme } from '@mui/material/styles'
+import Home from './components/Home'
 
 const theme = createTheme({
   typography: {
@@ -108,7 +108,7 @@ const App = () => {
         <Navbar user={user} logout={logout}/>
         <Notification info={info}/>
         <Routes>
-          <Route path='/' element={<CoursesList courses={courses} />}/>
+          <Route path='/' element={<Home courses={courses} />}/>
           <Route path='/addcourse' element={<AddCoursePage addCourse={addCourse}/>} />
           <Route path='/courses/:id' element={<CourseInfoPage courses={courses} like={like} />} />
           <Route path='/companies' element={<CompaniesList users={users}/>} />
