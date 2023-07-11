@@ -7,21 +7,21 @@ const CompaniesList = ({ users }) => {
     <Container sx={{ marginTop: '5rem',
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center',
       justifyContent: 'center',
-      minHeight: '100vh',
     }}>
-      <Typography
-        variant="h2"
-        sx={{
-          fontSize: '2rem',
-          '@media (max-width: 442px)': {
-            fontSize: '1.4rem',
-          },
-        }}
-      >
-        Companies
-      </Typography>
+      <Box>
+        <Typography
+          variant="h2"
+          sx={{
+            fontSize: '2rem',
+            '@media (max-width: 442px)': {
+              fontSize: '1.4rem',
+            },
+          }}
+        >
+          Companies
+        </Typography>
+      </Box>
       <Box
         sx={{
           display: 'flex',

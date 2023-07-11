@@ -6,4 +6,4 @@ import 'core-js/stable/index.js'
 import 'regenerator-runtime/runtime.js'
 
 // eslint-disable-next-line no-undef
-ReactDOM.createRoot(document.getElementById('app')).render(<Router><App /></Router>)
+ReactDOM.createRoot(document.getElementById('root')).render(<Router><App /></Router>)
