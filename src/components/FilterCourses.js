@@ -1,20 +1,27 @@
 import React from 'react'
-import { Form } from 'react-bootstrap'
+import { Box, TextField } from '@mui/material'
 
 const Filter = ({ filter, handleFilterChange }) => {
   return (
-    <div>
-      <Form>
-        <Form.Group>
-          <Form.Control
-            type='text'
-            placeholder='I want to learn...'
-            value={filter}
-            onChange={handleFilterChange}
-          />
-        </Form.Group>
-      </Form>
-    </div>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        marginTop: '2rem',
+        marginBottom: '2rem',
+        width: '100%',
+        maxWidth: '30rem',
+      }}
+    >
+      <TextField
+        type='text'
+        placeholder='Search'
+        value={filter}
+        onChange={handleFilterChange}
+        fullWidth
+        sx={{ marginBottom: '1rem', borderRadius: '2rem' }}
+      />
+    </Box>
   )
 }
 

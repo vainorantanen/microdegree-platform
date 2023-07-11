@@ -104,7 +104,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box style={{ marginTop: '4rem' }}>
+      <Box>
         <Navbar user={user} logout={logout}/>
         <Notification info={info}/>
         <Routes>
