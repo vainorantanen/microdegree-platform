@@ -6,20 +6,25 @@ const Notification = ({ info }) => {
     return null
   }
 
-  const margin = {
-    marginTop: '3%',
+  const notificationStyle = {
+    position: 'fixed',
+    top: '1rem',
+    left: 0,
+    right: 0,
+    zIndex: 9999,
+    margin: '3rem',
   }
 
   if (info.type === 'error') {
     return (
-      <Box sx={margin}>
+      <Box sx={notificationStyle}>
         <Alert severity="error">{info.message}</Alert>
       </Box>
     )
   }
 
   return (
-    <Box sx={margin}>
+    <Box sx={notificationStyle}>
       <Alert severity="success">{info.message}</Alert>
     </Box>
   )

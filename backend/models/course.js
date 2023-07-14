@@ -9,8 +9,12 @@ const schema = mongoose.Schema({
     type: String,
     required: true
   },
-  url: String,
-  likes: Number,
+  url: {
+    type: String,
+  },
+  likes: {
+    type: Number,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'

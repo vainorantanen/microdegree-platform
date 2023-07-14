@@ -14,6 +14,7 @@ const config = (env, argv) => {
         devServer: {
             static: path.resolve(__dirname, 'build'),
             compress: true,
+            historyApiFallback: true,
             port: 3000,
             proxy: {
                 '/api': {

@@ -19,6 +19,7 @@ router.post('/', async (request, response) => {
   })
 
   const user = request.user
+  console.log('user: ', user)
 
   if (!user) {
     return response.status(401).json({ error: 'operation not permitted' })

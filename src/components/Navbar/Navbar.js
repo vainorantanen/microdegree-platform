@@ -61,7 +61,7 @@ const Navbar = ({ user, logout }) => {
             <StyledButton color="inherit" component={Link} to="/addcourse">
               Add a course
             </StyledButton>
-            <Typography className='logged-user'>
+            <Typography className='logged-user' sx={{ marginTop: '0.5rem', fontWeight: 'bold' }}>
               {user && (
                 <>{user.name} Logged in</>
               )}
