@@ -60,6 +60,7 @@ const AddCoursePage = ({ addCourse }) => {
           label="Course title"
           placeholder="title"
           value={title}
+          required
           onChange={({ target }) => setTitle(target.value)}
           sx={{ marginBottom: '1rem' }}
         />
@@ -68,6 +69,7 @@ const AddCoursePage = ({ addCourse }) => {
           label="Company name"
           placeholder="company"
           value={company}
+          required
           onChange={({ target }) => setCompany(target.value)}
           sx={{ marginBottom: '1rem' }}
         />
@@ -75,6 +77,7 @@ const AddCoursePage = ({ addCourse }) => {
           id="url"
           label="URL to course page"
           placeholder="url"
+          required
           value={url}
           onChange={({ target }) => setUrl(target.value)}
           sx={{ marginBottom: '1rem' }}

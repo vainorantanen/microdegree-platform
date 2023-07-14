@@ -33,8 +33,20 @@ const LoginForm = ({ login, registerFormRef, addUser }) => {
       minHeight: '100vh',
     }}>
       <Box>
-        <Typography variant='h1'>Want to enhance your skills?</Typography>
-        <Typography variant='h2'>Log in to Micro Platform!</Typography>
+        <Typography sx={{
+          fontSize: '2.5rem',
+          textAlign: 'center',
+          '@media (max-width: 442px)': {
+            fontSize: '1.5rem',
+          },
+        }}>Want to enhance your skills?</Typography>
+        <Typography sx={{
+          fontSize: '2rem',
+          textAlign: 'center',
+          '@media (max-width: 442px)': {
+            fontSize: '1.5rem',
+          },
+        }}>Log in to Micro Platform!</Typography>
       </Box>
       <Box component="form" onSubmit={handleSubmit}
         sx={{
@@ -85,7 +97,13 @@ const LoginForm = ({ login, registerFormRef, addUser }) => {
         </Button>
       </Box>
       <Box>
-        <Typography variant='h3'>Not a member yet? Register below!</Typography>
+        <Typography sx={{
+          fontSize: '2rem',
+          textAlign: 'center',
+          '@media (max-width: 442px)': {
+            fontSize: '1.5rem',
+          },
+        }}>Not a member yet? Register below!</Typography>
         <Togglable buttonLabel='Register' ref={registerFormRef}>
           <RegisterPage addUser={addUser}/>
         </Togglable>

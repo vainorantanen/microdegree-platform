@@ -4,6 +4,7 @@ const app = express()
 const logger = require('./backend/utils/logger')
 const mongoose = require('mongoose')
 require('express-async-errors')
+const path = require('path')
 
 const coursesRouter = require('./backend/controllers/courses')
 const usersRouter = require('./backend/controllers/users')
@@ -34,6 +35,14 @@ app.use(express.json())
 app.use('/api/courses', coursesRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, './build/index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
 
 app.get('/version', (req, res) => {
   res.send('6, kokeillaan taas') // change this string to ensure a new version deployed
