@@ -1,21 +1,21 @@
 const router = require('express').Router()
-const Course = require('../models/course')
+const FeedPost = require('../models/feedpost')
 
 const { userExtractor } = require('../utils/middleware')
 
 router.get('/', async (request, response) => {
-  const courses = await Course
+  const feedPosts = await FeedPost
     .find({})
 
-  response.json(courses)
+  response.json(feedPosts)
 })
 
 router.post('/', userExtractor, async (request, response) => {
   //console.log("RBODY", request.body)
-  const { title, company, url, likes, description } = request.body
+  const { title, likes, description } = request.body
   //console.log("aINFO", additionalinfo)
-  const course = new Course({
-    title, company, url,
+  const feedPost = new FeedPost({
+    title,
     likes: likes ? likes : 0,
     description : description
   })
@@ -26,26 +26,26 @@ router.post('/', userExtractor, async (request, response) => {
     return response.status(401).json({ error: 'operation not permitted' })
   }
 
-  course.user = user._id
+  feedPost.user = user._id
 
-  let createdCourse = await course.save()
+  let createdFeedPost = await FeedPost.save()
 
-  user.courses = user.courses.concat(createdCourse._id)
+  user.feedPosts = user.feedPosts.concat(createdFeedPost._id)
   await user.save()
 
-  createdCourse = await Course.findById(createdCourse._id).populate('user')
+  createdFeedPost = await FeedPost.findById(createdFeedPost._id).populate('user')
 
-  response.status(201).json(createdCourse)
+  response.status(201).json(createdFeedPost)
 })
 
 router.put('/:id', async (request, response) => {
-  const { title, url, company, likes, description } = request.body
+  const { title, likes, description } = request.body
 
-  let updatedCourse = await Course.findByIdAndUpdate(request.params.id,  { title, url, company, likes, description }, { new: true })
+  let updatedFeedPost = await FeedPost.findByIdAndUpdate(request.params.id,  { title, likes, description }, { new: true })
 
-  updatedCourse = await Course.findById(updatedCourse._id).populate('user')
+  updatedFeedPost = await FeedPost.findById(updatedFeedPost._id).populate('user')
 
-  response.json(updatedCourse)
+  response.json(updatedFeedPost)
 })
 /*
 router.delete('/:id', userExtractor, async (request, response) => {

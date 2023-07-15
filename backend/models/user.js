@@ -31,7 +31,13 @@ const userSchema = mongoose.Schema({
   isCompany: {
     type: Boolean,
     required: true
-  }
+  },
+  feedPosts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'FeedPost'
+    }
+  ]
 })
 
 userSchema.plugin(uniqueValidator)

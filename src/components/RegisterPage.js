@@ -18,9 +18,17 @@ const RegisterPage = ({ addUser }) => {
   const [isTermsAccepted, setIsTermsAccepted] = useState(false)
   const [openTermsDialog, setOpenTermsDialog] = useState(false)
   const [ isCompany, setIsCompany ] = useState(false)
+  const [confirmPassword, setConfirmPassword] = useState('')
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+
+    if (password !== confirmPassword) {
+      // Passwords don't match, handle error here (e.g., display an error message)
+      console.log('Passwords dont match!')
+      return
+    }
+
     await addUser({ username, name, password, imageurl, description,
       isCompany })
     setName('')
@@ -96,6 +104,16 @@ const RegisterPage = ({ addUser }) => {
           fullWidth
           value={password}
           onChange={({ target }) => setPassword(target.value)}
+          margin="normal"
+        />
+        <TextField
+          id="confirm-password"
+          label="Confirm Password"
+          type="password"
+          required
+          fullWidth
+          value={confirmPassword}
+          onChange={({ target }) => setConfirmPassword(target.value)}
           margin="normal"
         />
         <TextField

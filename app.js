@@ -9,6 +9,7 @@ const path = require('path')
 const coursesRouter = require('./backend/controllers/courses')
 const usersRouter = require('./backend/controllers/users')
 const loginRouter = require('./backend/controllers/login')
+const feedPostsRouter = require('./backend/controllers/feedposts')
 
 // eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 5000
@@ -35,6 +36,7 @@ app.use(express.json())
 app.use('/api/courses', coursesRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/feedposts', feedPostsRouter)
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, './build/index.html'), function(err) {
