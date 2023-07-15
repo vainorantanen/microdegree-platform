@@ -44,6 +44,8 @@ const Navbar = ({ user, logout }) => {
     setIsDrawerOpen(!isDrawerOpen)
   }
 
+  console.log(user)
+
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="fixed">
@@ -58,9 +60,11 @@ const Navbar = ({ user, logout }) => {
             <StyledButton color="inherit" component={Link} to="/companies">
               Companies
             </StyledButton>
-            <StyledButton color="inherit" component={Link} to="/addcourse">
-              Add a course
-            </StyledButton>
+            {user && user.isCompany === true ? (
+              <StyledButton color="inherit" component={Link} to="/addcourse">
+                Add a course
+              </StyledButton>
+            ) : null}
             <Typography className='logged-user' sx={{ marginTop: '0.5rem', fontWeight: 'bold' }}>
               {user && (
                 <>{user.name} Logged in</>

@@ -60,7 +60,7 @@ const LoginForm = ({ login, registerFormRef, addUser }) => {
       >
         <Typography>Username</Typography>
         <TextField
-          id="username"
+          id="login-username"
           label="Username"
           value={username}
           className="username-input"
@@ -69,7 +69,7 @@ const LoginForm = ({ login, registerFormRef, addUser }) => {
         />
         <Typography>Password</Typography>
         <TextField
-          id="password"
+          id="login-password"
           label="Password"
           type="password"
           value={password}

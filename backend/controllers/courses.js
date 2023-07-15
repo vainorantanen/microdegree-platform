@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const Course = require('../models/course')
 
+const { userExtractor } = require('../utils/middleware')
+
 router.get('/', async (request, response) => {
   const courses = await Course
     .find({})
@@ -8,7 +10,7 @@ router.get('/', async (request, response) => {
   response.json(courses)
 })
 
-router.post('/', async (request, response) => {
+router.post('/', userExtractor, async (request, response) => {
   //console.log("RBODY", request.body)
   const { title, company, url, likes, description } = request.body
   //console.log("aINFO", additionalinfo)

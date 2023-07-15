@@ -42,6 +42,7 @@ const App = () => {
 
   useEffect(() => {
     const user = storageService.loadUser()
+    console.log('effect user: ', user)
     setUser(user)
   }, [])
 

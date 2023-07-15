@@ -3,7 +3,8 @@ const router = require('express').Router()
 const User = require('../models/user')
 
 router.post('/', async (request, response) => {
-  const { username, name, password, imageurl } = request.body
+  const { username, name, password, imageurl, description,
+    isCompany } = request.body
 
   if ( !password || password.length < 3) {
     return response.status(400).json({
@@ -18,7 +19,9 @@ router.post('/', async (request, response) => {
     username,
     name,
     passwordHash,
-    imageurl
+    imageurl,
+    description,
+    isCompany
   })
 
   const savedUser = await user.save()
