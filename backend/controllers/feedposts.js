@@ -6,18 +6,19 @@ const { userExtractor } = require('../utils/middleware')
 router.get('/', async (request, response) => {
   const feedPosts = await FeedPost
     .find({})
+    .populate('user', { name: 1, imageurl: 1 })
 
   response.json(feedPosts)
 })
 
 router.post('/', userExtractor, async (request, response) => {
   //console.log("RBODY", request.body)
-  const { title, likes, description } = request.body
+  const { likes, description, timeStamp } = request.body
   //console.log("aINFO", additionalinfo)
   const feedPost = new FeedPost({
-    title,
     likes: likes ? likes : 0,
-    description : description
+    description,
+    timeStamp
   })
 
   const user = request.user
@@ -28,7 +29,7 @@ router.post('/', userExtractor, async (request, response) => {
 
   feedPost.user = user._id
 
-  let createdFeedPost = await FeedPost.save()
+  let createdFeedPost = await feedPost.save()
 
   user.feedPosts = user.feedPosts.concat(createdFeedPost._id)
   await user.save()
@@ -39,9 +40,9 @@ router.post('/', userExtractor, async (request, response) => {
 })
 
 router.put('/:id', async (request, response) => {
-  const { title, likes, description } = request.body
+  const { likes, description } = request.body
 
-  let updatedFeedPost = await FeedPost.findByIdAndUpdate(request.params.id,  { title, likes, description }, { new: true })
+  let updatedFeedPost = await FeedPost.findByIdAndUpdate(request.params.id,  { likes, description }, { new: true })
 
   updatedFeedPost = await FeedPost.findById(updatedFeedPost._id).populate('user')
 

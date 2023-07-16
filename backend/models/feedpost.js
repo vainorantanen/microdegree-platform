@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
 const schema = mongoose.Schema({
-  title: {
-    type: String,
-    required: true
-  },
   likes: {
     type: Number,
   },
@@ -16,6 +12,10 @@ const schema = mongoose.Schema({
     type: String,
     required: true
   },
+  timeStamp: {
+    type: Date,
+    required: true
+  }
 })
 
 schema.set('toJSON', {

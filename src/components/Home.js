@@ -4,7 +4,7 @@ import CoursesList from './CoursesList'
 
 const Home = ({ courses }) => {
   return (
-    <Box sx={{ marginTop: '3rem' }}>
+    <Box sx={{ marginTop: '3rem', minHeight: '100vh' }}>
       <CoursesList courses={courses}/>
     </Box>
   )
