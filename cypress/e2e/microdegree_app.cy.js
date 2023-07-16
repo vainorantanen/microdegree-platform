@@ -45,8 +45,8 @@ describe('Microdegree app views', function() {
 
     cy.contains('Login').click()
 
-    cy.get('.username-input').type('firma')
-    cy.get('.password-input').type('firma')
+    cy.get('.username-input').type('maikko')
+    cy.get('.password-input').type('maikko')
     cy.get('.login-button-input').click()
 
 
