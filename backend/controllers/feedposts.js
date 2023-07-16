@@ -12,10 +12,9 @@ router.get('/', async (request, response) => {
 
 router.post('/', userExtractor, async (request, response) => {
   //console.log("RBODY", request.body)
-  const { title, likes, description } = request.body
+  const { likes, description } = request.body
   //console.log("aINFO", additionalinfo)
   const feedPost = new FeedPost({
-    title,
     likes: likes ? likes : 0,
     description : description
   })
@@ -28,7 +27,7 @@ router.post('/', userExtractor, async (request, response) => {
 
   feedPost.user = user._id
 
-  let createdFeedPost = await FeedPost.save()
+  let createdFeedPost = await feedPost.save()
 
   user.feedPosts = user.feedPosts.concat(createdFeedPost._id)
   await user.save()
@@ -39,9 +38,9 @@ router.post('/', userExtractor, async (request, response) => {
 })
 
 router.put('/:id', async (request, response) => {
-  const { title, likes, description } = request.body
+  const { likes, description } = request.body
 
-  let updatedFeedPost = await FeedPost.findByIdAndUpdate(request.params.id,  { title, likes, description }, { new: true })
+  let updatedFeedPost = await FeedPost.findByIdAndUpdate(request.params.id,  { likes, description }, { new: true })
 
   updatedFeedPost = await FeedPost.findById(updatedFeedPost._id).populate('user')
 

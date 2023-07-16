@@ -14,7 +14,7 @@ const Footer = () => {
         lineHeight: '3rem',
         backgroundColor: '#333',
         color: 'white',
-        borderRadius: '3rem',
+        borderRadius: '1rem',
       }}>
         <Typography variant="body1" sx={{
           fontSize: '24px',

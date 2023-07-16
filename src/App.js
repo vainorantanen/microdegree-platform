@@ -116,7 +116,7 @@ const App = () => {
           <Route path='/companies/:id' element={<CompanyInfoPage users={users}/>} />
           <Route path='/login' element={<LoginForm login={login} info={info} registerFormRef={registerFormRef}
             addUser={addUser}/>} />
-          <Route path='/feed' element={<Feed />} />
+          <Route path='/feed' element={<Feed user={user}/>} />
         </Routes>
         <Footer />
       </Box>
