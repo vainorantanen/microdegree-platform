@@ -5,24 +5,46 @@ const FeedPostCard = ({ post }) => {
   return (
     <Box
       sx={{
+        backgroundColor: 'white',
+        padding: '2rem',
+        border: '1px solid black',
+        borderRadius: '1rem',
+        marginLeft: '8rem',
+        marginRight: '8rem',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        backgroundColor: 'white',
-        textAlign: 'center',
-        padding: '2rem',
-        boxShadow: '0.3rem 0.3rem 0.3rem',
-        maxWidth: '30rem',
-        borderRadius: '1rem',
-        marginBottom: '1rem',
-        marginLeft: 'auto',
-        marginRight: 'auto',
+        '@media (max-width: 820px)': {
+          marginLeft: '0.1rem',
+          marginRight: '0.1rem',
+        },
       }}
     >
-      <Typography>{post.user.name}</Typography>
-      <Typography>
-        {post.description}
-      </Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          marginBottom: '1rem',
+          flexWrap: 'wrap',
+        }}
+      >
+        <img
+          src={`${post.user.imageurl}`}
+          alt='Company logo'
+          style={{
+            border: '1px solid black',
+            borderRadius: '1rem',
+            width: '5rem',
+            height: 'auto',
+            marginRight: '1rem',
+          }}
+        />
+        <div>
+          <Typography>{post.user.name}</Typography>
+          {post.timeStamp ? (
+            <Typography>Published {post.timeStamp.split('T')[0]}</Typography>
+          ) : <Typography>Published over a year ago</Typography>}
+        </div>
+      </Box>
+      <Typography style={{ whiteSpace: 'break-spaces' }}>{post.description}</Typography>
     </Box>
   )
 }

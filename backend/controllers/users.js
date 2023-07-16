@@ -32,6 +32,7 @@ router.post('/', async (request, response) => {
 router.get('/', async (request, response) => {
   const users = await User.find({})
     .populate('courses', { title: 1, company: 1, url: 1, likes: 1 })
+    .populate('feedPosts', { description: 1, likes: 1, timeStamp: 1 })
 
   response.json(users)
 })

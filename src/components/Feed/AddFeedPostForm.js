@@ -22,7 +22,7 @@ const AddFeedPostForm = ({ feedPosts, setFeedPosts }) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     console.log('handlesubmit', description)
-    await addFeedPost({ description })
+    await addFeedPost({ description, timeStamp : new Date() })
     setDescription('')
   }
 
@@ -35,10 +35,11 @@ const AddFeedPostForm = ({ feedPosts, setFeedPosts }) => {
     }}>
       <Typography
         sx={{
-          fontSize: '3rem',
+          fontSize: '1.3rem',
           textAlign: 'center',
+          marginTop: '2rem',
           '@media (max-width: 442px)': {
-            fontSize: '1.5rem',
+            fontSize: '1rem',
           },
         }}
       >
@@ -79,7 +80,7 @@ const AddFeedPostForm = ({ feedPosts, setFeedPosts }) => {
               backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)' }
           }}
         >
-          Add!
+          Publish
         </Button>
       </Box>
     </Container>

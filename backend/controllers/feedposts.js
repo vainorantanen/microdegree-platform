@@ -6,17 +6,19 @@ const { userExtractor } = require('../utils/middleware')
 router.get('/', async (request, response) => {
   const feedPosts = await FeedPost
     .find({})
+    .populate('user', { name: 1, imageurl: 1 })
 
   response.json(feedPosts)
 })
 
 router.post('/', userExtractor, async (request, response) => {
   //console.log("RBODY", request.body)
-  const { likes, description } = request.body
+  const { likes, description, timeStamp } = request.body
   //console.log("aINFO", additionalinfo)
   const feedPost = new FeedPost({
     likes: likes ? likes : 0,
-    description : description
+    description,
+    timeStamp
   })
 
   const user = request.user

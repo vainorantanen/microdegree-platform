@@ -12,6 +12,10 @@ const schema = mongoose.Schema({
     type: String,
     required: true
   },
+  timeStamp: {
+    type: Date,
+    required: true
+  }
 })
 
 schema.set('toJSON', {
