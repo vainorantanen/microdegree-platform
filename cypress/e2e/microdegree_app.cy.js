@@ -43,6 +43,13 @@ describe('Microdegree app views', function() {
     cy.visit('http://localhost:5000')
     cy.contains('Courses')
 
+    cy.contains('Login').click()
+
+    cy.get('.username-input').type('firma')
+    cy.get('.password-input').type('firma')
+    cy.get('.login-button-input').click()
+
+
     cy.contains('Add a course').click()
     cy.contains('Add a new course!')
     cy.contains('Course title')
