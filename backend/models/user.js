@@ -8,8 +8,14 @@ const userSchema = mongoose.Schema({
     minlength: 3,
     unique: true
   },
-  name: String,
-  passwordHash: String,
+  name: {
+    type: String,
+    required: true
+  },
+  passwordHash: {
+    type: String,
+    required: true
+  },
   courses: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -18,7 +24,20 @@ const userSchema = mongoose.Schema({
   ],
   imageurl : {
     type : String
-  }
+  },
+  description: {
+    type: String
+  },
+  isCompany: {
+    type: Boolean,
+    required: true
+  },
+  feedPosts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'FeedPost'
+    }
+  ]
 })
 
 userSchema.plugin(uniqueValidator)

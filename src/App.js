@@ -25,6 +25,7 @@ import { Box } from '@mui/material'
 import { ThemeProvider } from '@emotion/react'
 import { createTheme } from '@mui/material/styles'
 import Home from './components/Home'
+import Feed from './components/Feed/Feed'
 
 const theme = createTheme({
   typography: {
@@ -115,6 +116,7 @@ const App = () => {
           <Route path='/companies/:id' element={<CompanyInfoPage users={users}/>} />
           <Route path='/login' element={<LoginForm login={login} info={info} registerFormRef={registerFormRef}
             addUser={addUser}/>} />
+          <Route path='/feed' element={<Feed />} />
         </Routes>
         <Footer />
       </Box>

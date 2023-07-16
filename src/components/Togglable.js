@@ -31,7 +31,7 @@ const Togglable = forwardRef((props, ref) => {
             marginBottom: '2rem',
             '&:hover': {
               transform: 'scale(1.05)',
-              backgroundImage: 'linear-gradient(to bottom, #003eff, #006eff)' },
+              backgroundColor: 'red' },
           }}
 
           onClick={toggleVisibility}>Cancel</Button>

@@ -58,10 +58,15 @@ const Navbar = ({ user, logout }) => {
             <StyledButton color="inherit" component={Link} to="/companies">
               Companies
             </StyledButton>
-            <StyledButton color="inherit" component={Link} to="/addcourse">
-              Add a course
+            <StyledButton color="inherit" component={Link} to="/feed">
+              My Feed
             </StyledButton>
-            <Typography className='logged-user' sx={{ marginTop: '0.5rem', fontWeight: 'bold' }}>
+            {user && user.isCompany === true ? (
+              <StyledButton color="inherit" component={Link} to="/addcourse">
+                Add a course
+              </StyledButton>
+            ) : null}
+            <Typography className='logged-user' sx={{ marginTop: '0.5rem', marginLeft: '1rem', fontWeight: 'bold' }}>
               {user && (
                 <>{user.name} Logged in</>
               )}
@@ -84,9 +89,14 @@ const Navbar = ({ user, logout }) => {
           <ListItemButton component={Link} to="/companies" onClick={toggleDrawer}>
             <ListItemText primary="Companies" />
           </ListItemButton>
-          <ListItemButton component={Link} to="/addcourse" onClick={toggleDrawer}>
-            <ListItemText primary="Add a course" />
+          <ListItemButton component={Link} to="/feed" onClick={toggleDrawer}>
+            <ListItemText primary="My Feed" />
           </ListItemButton>
+          {user && user.isCompany === true ? (
+            <ListItemButton component={Link} to="/addcourse" onClick={toggleDrawer}>
+              <ListItemText primary="Add a course" />
+            </ListItemButton>
+          ) : null}
           {!user ? (
             <ListItemButton component={Link} to="/login" onClick={toggleDrawer}>
               <ListItemText primary="Login" />
