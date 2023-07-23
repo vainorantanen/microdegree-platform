@@ -38,6 +38,14 @@ jobs:
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
           SECRET: ${{ secrets.SECRET }}
+      
+      - name: Test Failure
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        if: failure()
+        with:
+            severity: error
+            details: Test failed!
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
   tag_release_and_deployment:
     name: Bump version and deploy
@@ -68,3 +76,11 @@ jobs:
           service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
           api-key: ${{ secrets.MY_RENDER_API_KEY }}
         if: ${{ github.event_name == 'push' && !contains(github.event.commits[0].message, '#skip') }}
+      
+      - name: Test Success
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        if: success()
+        with:
+            severity: info
+            details: Deployment succeeded!
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
