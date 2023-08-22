@@ -47,7 +47,7 @@ app.get('/*', function(req, res) {
 })
 
 app.get('/version', (req, res) => {
-  res.send('6, kokeillaan taas') // change this string to ensure a new version deployed
+  res.send('7, opettajan pull request') // change this string to ensure a new version deployed
 })
 
 app.get('/health', (req, res) => {
